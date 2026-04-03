@@ -11,13 +11,10 @@
 <body class="bg-blue-900 flex items-center justify-center min-h-screen p-4">
     <div class="bg-white p-8 rounded-3xl shadow-2xl w-full max-w-md">
         <h2 id="formTitle" class="text-2xl font-black text-blue-900 mb-6 text-center italic uppercase">Student Login</h2>
-        
         <div class="space-y-4">
             <input type="email" id="email" placeholder="EMAIL ADDRESS" class="w-full border-b-2 py-2 outline-none focus:border-yellow-400 font-bold uppercase text-xs text-gray-700">
             <input type="password" id="password" placeholder="PASSWORD" class="w-full border-b-2 py-2 outline-none focus:border-yellow-400 font-bold uppercase text-xs text-gray-700">
-            
-            <button onclick="handleAuth()" id="authBtn" class="w-full bg-blue-900 text-white py-4 rounded-xl font-bold tracking-widest hover:bg-yellow-400 hover:text-black transition uppercase mt-4 shadow-lg">Login</button>
-            
+            <button onclick="handleAuth()" id="authBtn" class="w-full bg-blue-900 text-white py-4 rounded-xl font-bold tracking-widest hover:bg-yellow-400 hover:text-black transition uppercase mt-4">Login</button>
             <p class="text-center text-[10px] font-bold text-gray-500 uppercase mt-4">
                 <span id="toggleText">Belum punya akun?</span> 
                 <button onclick="toggleMode()" id="toggleBtn" class="text-blue-900 underline">Daftar Sekarang</button>
@@ -27,6 +24,7 @@
     </div>
 
     <script>
+        // DATA ASLI DARI FIREBASE ANDA
         const firebaseConfig = {
             apiKey: "AIzaSyAffpby-SpWcQEcBIAuAotfXbhjY07s-_k",
             authDomain: "englishhouse-60f07.firebaseapp.com",
@@ -37,12 +35,10 @@
             measurementId: "G-LKNVC5PT2E"
         };
 
-        // Inisialisasi Firebase
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         let isLoginMode = true;
 
-        // Fungsi untuk berganti antara mode Login dan Daftar
         function toggleMode() {
             isLoginMode = !isLoginMode;
             document.getElementById('formTitle').innerText = isLoginMode ? 'Student Login' : 'Student Register';
@@ -51,31 +47,17 @@
             document.getElementById('toggleBtn').innerText = isLoginMode ? 'Daftar Sekarang' : 'Login Sekarang';
         }
 
-        // Fungsi utama untuk Login atau Register
         function handleAuth() {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
-            if (!email || !password) {
-                alert('Tolong isi Email dan Password!');
-                return;
-            }
-
             if (isLoginMode) {
-                // Proses Sign In
                 auth.signInWithEmailAndPassword(email, password)
-                    .then(() => { 
-                        alert('Berhasil Login! Selamat datang kembali.'); 
-                        window.location.href = 'index.html'; 
-                    })
+                    .then(() => { alert('Berhasil Login!'); window.location.href = 'index.html'; })
                     .catch(error => alert('Gagal Login: ' + error.message));
             } else {
-                // Proses Create User (Daftar)
                 auth.createUserWithEmailAndPassword(email, password)
-                    .then(() => { 
-                        alert('Akun berhasil dibuat! Silakan gunakan email tersebut untuk Login.'); 
-                        toggleMode(); 
-                    })
+                    .then(() => { alert('Akun berhasil dibuat!'); toggleMode(); })
                     .catch(error => alert('Gagal Daftar: ' + error.message));
             }
         }
