@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENGLISHouse - On Line Learning Center</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; }
+        .nav-marquee-container { flex: 1; margin: 0 30px; overflow: hidden; white-space: nowrap; background: rgba(255, 255, 255, 0.1); border-radius: 50px; padding: 5px 0; display: flex; align-items: center; }
+        .marquee-text { display: inline-block; padding-left: 100%; animation: marquee 30s linear infinite; font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; color: #ffffff; }
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+        .card-custom { transition: transform 0.3s ease; border-radius: 1.5rem; cursor: pointer; display: flex; flex-direction: column; height: 100%; }
+        .card-custom:hover { transform: scale(1.05); }
+        .enroll-btn-style { background-color: white; color: #1e3a8a; padding: 12px 0; border-radius: 0.75rem; font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.15em; margin-top: auto; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1); transition: all 0.3s ease; text-align: center; }
+        .card-custom:hover .enroll-btn-style { background-color: #facc15; color: #1e3a8a; }
+        .hero-bg-image { background-image: linear-gradient(rgba(30, 58, 138, 0.75), rgba(30, 58, 138, 0.85)), url('https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?q=80&w=2070'); background-size: cover; background-position: center; }
+        .main-content-bg { background-image: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=2071'); background-size: cover; background-position: center; background-attachment: fixed; }
+        #registrationModal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.6); backdrop-filter: blur(5px); }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <nav class="bg-blue-900 text-white p-4 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold tracking-tighter shrink-0">ENGLIS<span class="text-yellow-400">House</span></h1>
+            <div class="nav-marquee-container hidden md:flex">
+                <div class="marquee-text">🚀 Batch Maret 2026: A1 to C2 Levels Available | 🎁 Diskon 50% Early Bird | 🩺 Be Global with ENGLISHouse!</div>
+            </div>
+            <div class="space-x-4 text-xs font-bold uppercase tracking-widest shrink-0 flex items-center">
+                <a href="#" class="hover:text-yellow-400">Home</a>
+                <a href="#classes" class="hover:text-yellow-400">Programs</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-bg-image text-white pt-24 pb-20 px-4 text-center">
+        <div class="container mx-auto">
+            <h2 class="text-5xl md:text-7xl font-black mb-6 tracking-tighter uppercase leading-tight">Elite Vocational English</h2>
+            <p class="text-xl opacity-90 font-medium max-w-2xl mx-auto italic">"Transforming potential into global expertise since 2006."</p>
+            <div class="mt-10">
+                <a href="#classes" class="bg-yellow-400 text-blue-900 px-10 py-4 rounded-full font-black text-sm uppercase tracking-widest hover:bg-white transition-all shadow-xl">Start Learning</a>
+            </div>
+        </div>
+    </header>
+
+    <main id="classes" class="main-content-bg py-20 px-4">
+        <div class="container mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black text-blue-900 tracking-tighter uppercase italic">Our Programs</h2>
+                <div class="w-20 h-2 bg-yellow-400 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div onclick="openModal('English for Law')" class="card-custom bg-cyan-700 text-white p-10 shadow-xl">
+                    <i class="fas fa-balance-scale text-5xl mb-6 text-yellow-400"></i>
+                    <h3 class="text-2xl font-black mb-2 uppercase tracking-tighter">English for Law</h3>
+                    <div class="enroll-btn-style">Enroll Me</div>
+                </div>
+                <div onclick="openModal('English for Medicine')" class="card-custom bg-pink-800 text-white p-10 shadow-xl">
+                    <i class="fas fa-stethoscope text-5xl mb-6 text-yellow-400"></i>
+                    <h3 class="text-2xl font-black mb-2 uppercase tracking-tighter">English for Medicine</h3>
+                    <div class="enroll-btn-style">Enroll Me</div>
+                </div>
+                <div onclick="openModal('English for Business')" class="card-custom bg-emerald-800 text-white p-10 shadow-xl">
+                    <i class="fas fa-chart-line text-5xl mb-6 text-yellow-400"></i>
+                    <h3 class="text-2xl font-black mb-2 uppercase tracking-tighter">English for Business</h3>
+                    <div class="enroll-btn-style">Enroll Me</div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="registrationModal">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-3xl shadow-2xl w-full max-w-md overflow-hidden relative">
+                <div class="bg-blue-900 p-6 text-white flex justify-between items-center">
+                    <h3 class="text-xl font-bold uppercase tracking-tight italic">Registration Form</h3>
+                    <button onclick="closeModal()" class="text-white text-2xl font-bold">&times;</button>
+                </div>
+                <form id="enrollForm" class="p-8 space-y-4">
+                    <input type="hidden" id="selectedProgram" name="Pilihan_Program">
+                    <input type="text" name="Nama_Lengkap" placeholder="FULL NAME" required class="w-full border-b-2 py-2 outline-none focus:border-blue-900 transition font-bold uppercase text-xs">
+                    <input type="email" name="Email" placeholder="EMAIL ADDRESS" required class="w-full border-b-2 py-2 outline-none focus:border-blue-900 transition font-bold uppercase text-xs">
+                    <input type="tel" name="Nomor_WhatsApp" placeholder="WHATSAPP NUMBER" required class="w-full border-b-2 py-2 outline-none focus:border-blue-900 transition font-bold uppercase text-xs">
+                    <button type="submit" id="submitBtn" class="w-full bg-blue-900 text-white py-4 rounded-xl font-bold tracking-widest hover:bg-yellow-400 hover:text-black transition uppercase mt-4">Send Registration</button>
+                </form>
+                <div id="successMsg" class="hidden p-8 text-center py-12">
+                    <i class="fas fa-check-circle text-6xl text-emerald-500 mb-4"></i>
+                    <p class="font-black text-blue-900 italic">SUCCESSFULLY SENT!</p>
+                    <button onclick="closeModal()" class="mt-8 text-blue-900 font-bold underline text-xs uppercase">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-blue-900 text-white py-12 px-6 text-center">
+        <div class="container mx-auto">
+            <h4 class="text-xl font-black tracking-tighter uppercase italic">ENGLIS<span class="text-yellow-400">House</span></h4>
+            <p class="text-[10px] font-bold opacity-50 tracking-widest uppercase mt-4 italic">&copy; 2006 ENGLISHouse. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const modal = document.getElementById('registrationModal');
+        const form = document.getElementById('enrollForm');
+        // LINK BARU BOSS:
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxsz9uD17245uTbNOUyPNc1idoS3xxbESz_z2RxIyr83AX4J0HjYErBRyNh_RejKmtm/exec';
+        
+        function openModal(p) { modal.style.display = 'block'; document.getElementById('selectedProgram').value = p; }
+        function closeModal() { modal.style.display = 'none'; form.classList.remove('hidden'); document.getElementById('successMsg').classList.add('hidden'); form.reset(); }
+        
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            const b = document.getElementById('submitBtn');
+            const nama = form.querySelector('[name="Nama_Lengkap"]').value;
+            const program = document.getElementById('selectedProgram').value;
+            b.disabled = true; b.innerText = 'SENDING...';
+
+            // Kirim data menggunakan FormData
+            fetch(scriptURL, { method: 'POST', body: new FormData(form), mode: 'no-cors' })
+            .then(() => { 
+                form.classList.add('hidden'); 
+                document.getElementById('successMsg').classList.remove('hidden'); 
+                b.disabled = false; b.innerText = 'Send Registration'; 
+                window.open(`https://wa.me/62817197070?text=Halo Admin, saya ${nama} daftar program ${program}`, '_blank');
+            })
+            .catch(() => { 
+                alert('Gagal mengirim data!'); 
+                b.disabled = false; b.innerText = 'Send Registration';
+            });
+        });
+        window.onclick = function(event) { if (event.target == modal) { closeModal(); } }
+    </script>
+</body>
+</html>

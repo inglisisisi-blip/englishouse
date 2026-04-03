@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diagnostic Assessment - ENGLISHouse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-slate-50 py-10 px-4 font-sans">
+    <div class="max-w-2xl mx-auto bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100">
+        <div class="bg-blue-900 p-8 text-white text-center">
+            <h1 class="text-3xl font-black italic tracking-tighter uppercase">ENGLIS<span class="text-yellow-400">House</span></h1>
+            <div class="mt-4 p-3 bg-blue-800 rounded-2xl inline-block border border-blue-700">
+                <p class="text-blue-200 text-xs uppercase tracking-[0.2em] font-bold">Diagnostic Assessment</p>
+                <h2 class="text-xl font-bold mt-1">Hello, <span id="display-name" class="text-yellow-400 italic">Student</span>!</h2>
+            </div>
+        </div>
+
+        <div id="quiz-container" class="p-8">
+            <p class="text-gray-500 mb-8 text-center italic">Selesaikan 4 pertanyaan singkat ini untuk menentukan level Anda.</p>
+            <form id="assessment-form" class="space-y-6">
+                <div class="p-6 bg-gray-50 rounded-2xl border border-gray-200">
+                    <p class="font-bold text-gray-800 mb-4 text-lg">1. Which term is commonly used in English for Law to mean "a written statement confirmed by oath"?</p>
+                    <div class="grid grid-cols-1 gap-3">
+                        <label class="flex items-center p-4 bg-white border-2 rounded-xl cursor-pointer hover:border-blue-500 transition">
+                            <input type="radio" name="q1" value="A" required class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 font-medium">Affidavit</span>
+                        </label>
+                        <label class="flex items-center p-4 bg-white border-2 rounded-xl cursor-pointer hover:border-blue-500 transition">
+                            <input type="radio" name="q1" value="B" class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 font-medium">Prescription</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="p-6 bg-gray-50 rounded-2xl border border-gray-200">
+                    <p class="font-bold text-gray-800 mb-4 text-lg">2. In a medical context, "Shortness of breath" is also known as...</p>
+                    <div class="grid grid-cols-1 gap-3">
+                        <label class="flex items-center p-4 bg-white border-2 rounded-xl cursor-pointer hover:border-blue-500 transition">
+                            <input type="radio" name="q2" value="A" required class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 font-medium">Dyspnea</span>
+                        </label>
+                        <label class="flex items-center p-4 bg-white border-2 rounded-xl cursor-pointer hover:border-blue-500 transition">
+                            <input type="radio" name="q2" value="B" class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 font-medium">Insomnia</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="p-6 bg-gray-50 rounded-2xl border border-gray-200">
+                    <p class="font-bold text-gray-800 mb-4 text-lg">3. "If the patient ___ the medicine, he would feel better now."</p>
+                    <div class="grid grid-cols-1 gap-3">
+                        <label class="flex items-center p-4 bg-white border-2 rounded-xl cursor-pointer hover:border-blue-500 transition">
+                            <input type="radio" name="q3" value="A" required class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 font-medium">had taken</span>
+                        </label>
+                        <label class="flex items-center p-4 bg-white border-2 rounded-xl cursor-pointer hover:border-blue-500 transition">
+                            <input type="radio" name="q3" value="B" class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 font-medium">take</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="p-6 bg-gray-50 rounded-2xl border border-gray-200">
+                    <p class="font-bold text-gray-800 mb-4 text-lg">4. What is the passive form of: "The lawyer files the lawsuit."</p>
+                    <div class="grid grid-cols-1 gap-3">
+                        <label class="flex items-center p-4 bg-white border-2 rounded-xl cursor-pointer hover:border-blue-500 transition">
+                            <input type="radio" name="q4" value="A" required class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 font-medium">The lawsuit is filed by the lawyer.</span>
+                        </label>
+                        <label class="flex items-center p-4 bg-white border-2 rounded-xl cursor-pointer hover:border-blue-500 transition">
+                            <input type="radio" name="q4" value="B" class="w-5 h-5 text-blue-600">
+                            <span class="ml-3 font-medium">The lawyer is being filed by the lawsuit.</span>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-blue-600 text-white font-black py-5 rounded-2xl hover:bg-blue-700 transition-all shadow-xl uppercase tracking-widest text-lg">
+                    Submit Assessment
+                </button>
+            </form>
+        </div>
+
+        <div id="result-container" class="hidden p-10 text-center animate-fade-in">
+            <div class="mb-6 relative inline-block">
+                <i class="fas fa-award text-yellow-400 text-8xl"></i>
+                <div class="absolute -bottom-2 -right-2 bg-green-500 text-white px-3 py-1 rounded-full text-xs font-bold">DONE</div>
+            </div>
+            <h2 class="text-3xl font-black text-gray-800 mb-2">Assessment Completed!</h2>
+            <p class="text-gray-500 mb-8 italic">Hasil Anda telah tercatat di sistem kami.</p>
+            
+            <div class="mb-10 p-6 bg-blue-50 rounded-3xl border-2 border-dashed border-blue-200">
+                <p class="text-xs text-blue-800 font-bold uppercase tracking-widest mb-1">Your Score:</p>
+                <div class="text-7xl font-black text-blue-900" id="score-display">0/4</div>
+            </div>
+
+            <div class="bg-yellow-50 p-6 rounded-2xl mb-10 border border-yellow-200 text-left">
+                <h4 class="font-bold text-yellow-800 flex items-center mb-2">
+                    <i class="fas fa-info-circle mr-2"></i> STATUS: NOT CONFIRMED
+                </h4>
+                <p class="text-sm text-yellow-700 leading-relaxed">Untuk membuka akses materi **English for Law, Medicine, & General English**, Anda perlu mendapatkan **Kode Aktivasi** dari Admin.</p>
+            </div>
+
+            <button onclick="contactAdmin()" class="w-full bg-green-500 text-white font-black py-5 rounded-2xl hover:bg-green-600 transition shadow-lg flex items-center justify-center text-lg uppercase tracking-wide">
+                <i class="fab fa-whatsapp mr-3 text-2xl"></i> Klaim Kode Akses Anda
+            </button>
+        </div>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const savedName = localStorage.getItem('student_name');
+            if (savedName) {
+                document.getElementById('display-name').innerText = savedName;
+            }
+        }
+
+        const form = document.getElementById('assessment-form');
+        const quizContainer = document.getElementById('quiz-container');
+        const resultContainer = document.getElementById('result-container');
+        const scoreDisplay = document.getElementById('score-display');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            let score = 0;
+            const answers = { q1: "A", q2: "A", q3: "A", q4: "A" };
+            const formData = new FormData(form);
+            for (let [key, value] of formData.entries()) {
+                if (value === answers[key]) score++;
+            }
+            quizContainer.classList.add('hidden');
+            resultContainer.classList.remove('hidden');
+            scoreDisplay.innerText = `${score} / 4`;
+            localStorage.setItem('last_score', score);
+        });
+
+        function contactAdmin() {
+            const score = localStorage.getItem('last_score') || 0;
+            const name = localStorage.getItem('student_name') || "Siswa";
+            const adminWA = "6281234567890"; // GANTI NOMOR WA ANDA
+            
+            const message = `Halo Admin ENGLISHouse, saya ${name}.\n\n` +
+                            `Saya telah menyelesaikan Diagnostic Assessment dengan *Skor: ${score}/4*.\n\n` +
+                            `Mohon konfirmasi status saya agar saya dapat mengakses materi pelajaran. Terima kasih!`;
+            
+            window.location.href = `https://wa.me/${adminWA}?text=${encodeURIComponent(message)}`;
+        }
+    </script>
+</body>
+</html>

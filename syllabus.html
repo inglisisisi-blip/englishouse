@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syllabus Levels A1-C2 - ENGLISHouse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Montserrat', sans-serif; background-color: #f0f4f8; }
+        
+        /* Tab Styling */
+        .tab-btn.active { background-color: #1e3a8a; color: white; border-color: #1e3a8a; transform: translateY(-5px); box-shadow: 0 10px 15px -3px rgba(30, 58, 138, 0.3); }
+        
+        /* Hero with Background Image */
+        .hero-syllabus { 
+            background-image: linear-gradient(rgba(30, 58, 138, 0.85), rgba(30, 58, 138, 0.95)), 
+                              url('https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=2069&auto=format&fit=crop'); 
+            background-size: cover; 
+            background-position: center;
+            background-attachment: fixed;
+            position: relative; 
+            overflow: hidden; 
+        }
+
+        .level-card { transition: all 0.3s ease; display: none; }
+        .level-card.active { display: block; animation: fadeIn 0.5s ease; }
+        
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body>
+
+    <nav class="bg-blue-900 text-white p-4 shadow-lg sticky top-0 z-50">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold tracking-tighter shrink-0">ENGLIS<span class="text-yellow-400">House</span></h1>
+            <div class="space-x-6 text-xs font-bold uppercase tracking-widest">
+                <a href="index.html" class="hover:text-yellow-400 transition">Home</a>
+                <a href="syllabus.html" class="text-yellow-400 border-b-2 border-yellow-400">Syllabus</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-syllabus text-white py-24 px-4 text-center">
+        <div class="container mx-auto relative z-10">
+            <h2 class="text-5xl md:text-6xl font-black mb-4 uppercase tracking-tighter text-yellow-400">Course Syllabus</h2>
+            <p class="text-sm md:text-base opacity-95 tracking-widest font-bold uppercase max-w-2xl mx-auto leading-relaxed italic">
+                Global Standards: CEFR Alignment from Beginner (A1) to Mastery (C2)
+            </p>
+            <div class="w-24 h-2 bg-yellow-400 mx-auto mt-6 rounded-full"></div>
+        </div>
+    </header>
+
+    <main class="container mx-auto py-12 px-4">
+        <div class="text-center mb-12">
+            <label class="text-xs font-black text-blue-900 uppercase tracking-widest mb-4 block">Select Learning Path:</label>
+            <select id="programSelect" onchange="updateSyllabus()" class="bg-white border-2 border-blue-900 text-blue-900 px-6 py-3 rounded-xl font-bold uppercase text-sm outline-none shadow-lg cursor-pointer">
+                <option value="law">English for Law</option>
+                <option value="medicine">English for Medicine</option>
+                <option value="business">English for Business</option>
+                <option value="tourism">English for Tourism</option>
+                <option value="teens">English for Teens</option>
+                <option value="general">General English</option>
+            </select>
+        </div>
+
+        <div class="flex flex-wrap justify-center gap-2 mb-10">
+            <button onclick="showLevel('A1')" class="tab-btn active px-6 py-3 rounded-full border-2 border-gray-300 font-black text-sm transition-all uppercase" id="btnA1">A1</button>
+            <button onclick="showLevel('A2')" class="tab-btn px-6 py-3 rounded-full border-2 border-gray-300 font-black text-sm transition-all uppercase" id="btnA2">A2</button>
+            <button onclick="showLevel('B1')" class="tab-btn px-6 py-3 rounded-full border-2 border-gray-300 font-black text-sm transition-all uppercase" id="btnB1">B1</button>
+            <button onclick="showLevel('B2')" class="tab-btn px-6 py-3 rounded-full border-2 border-gray-300 font-black text-sm transition-all uppercase" id="btnB2">B2</button>
+            <button onclick="showLevel('C1')" class="tab-btn px-6 py-3 rounded-full border-2 border-gray-300 font-black text-sm transition-all uppercase" id="btnC1">C1</button>
+            <button onclick="showLevel('C2')" class="tab-btn px-6 py-3 rounded-full border-2 border-gray-300 font-black text-sm transition-all uppercase" id="btnC2">C2</button>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+            <div id="contentDisplay" class="bg-white p-8 md:p-12 rounded-[2rem] shadow-2xl border-t-8 border-blue-900 min-h-[400px]">
+                <div id="levelTitle" class="text-3xl font-black text-blue-900 uppercase mb-6">A1 - Beginner</div>
+                <div id="levelDesc" class="text-gray-600 font-medium mb-8 leading-relaxed">Memulai dasar-dasar komunikasi profesional di bidang pilihan Anda.</div>
+                
+                <h4 class="font-black text-[10px] uppercase tracking-[0.2em] text-blue-900 mb-6 border-b pb-2 inline-block">Key Learning Outcomes</h4>
+                <ul id="itemList" class="space-y-4">
+                    </ul>
+
+                <div class="mt-12 pt-8 border-t border-gray-100 flex justify-between items-center">
+                    <div>
+                        <p class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Duration</p>
+                        <p class="font-black text-blue-900 uppercase">3 Months / Level</p>
+                    </div>
+                    <a href="index.html#classes" class="bg-yellow-400 text-blue-900 px-8 py-3 rounded-full font-black text-xs uppercase tracking-widest hover:bg-blue-900 hover:text-white transition-all shadow-md">Register Level</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-blue-900 text-white py-12 px-6 text-center mt-20">
+        <div class="container mx-auto">
+            <h4 class="text-xl font-black tracking-tighter uppercase italic">ENGLIS<span class="text-yellow-400">House</span></h4>
+            <p class="text-[10px] font-bold opacity-50 tracking-widest uppercase mt-4 italic">&copy; 2006 ENGLISHouse. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentLevel = 'A1';
+        
+        const syllabusData = {
+            law: {
+                A1: ["Dasar terminologi hukum", "Mengenal sistem pengadilan", "Salam profesional hukum"],
+                A2: ["Dasar penulisan kontrak", "Istilah hukum keluarga", "Komunikasi dengan klien"],
+                B1: ["Analisis kasus pidana", "Bahasa Inggris untuk mediasi", "Presentasi bukti dasar"],
+                B2: ["Drafting kontrak kompleks", "Debat hukum (Moot Court)", "Istilah hukum internasional"],
+                C1: ["Penulisan opini hukum", "Analisis kebijakan publik", "Negosiasi tingkat tinggi"],
+                C2: ["Publikasi jurnal hukum", "Ahli bahasa hukum (Expert Witness)", "Mastery of Legal Nuances"]
+            },
+            medicine: {
+                A1: ["Anatomi dasar manusia", "Alat-alat medis umum", "Istilah rumah sakit"],
+                A2: ["Komunikasi dokter-pasien", "Penulisan resep dasar", "Prosedur pertolongan pertama"],
+                B1: ["Diagnosis penyakit dalam", "Bahasa Inggris farmakologi", "Penulisan laporan pasien"],
+                B2: ["Presentasi medis ilmiah", "Bedah istilah khusus", "Etika medis global"],
+                C1: ["Riset klinis internasional", "Analisis jurnal medis", "Publikasi jurnal kesehatan"],
+                C2: ["Ahli bedah internasional", "Kepemimpinan medis", "Medical Mastery C2"]
+            },
+            business: {
+                A1: ["Greeting & Introduction", "Office vocabulary", "Basic Email"],
+                A2: ["Daily meetings", "Telephoning skills", "Ordering supplies"],
+                B1: ["Business presentation", "Negotiation basics", "Marketing terms"],
+                B2: ["Report writing", "Leadership communication", "Crisis management"],
+                C1: ["Strategy analysis", "Public speaking expert", "Financial reports"],
+                C2: ["CEO level mastery", "International diplomacy", "Global Management"]
+            },
+            tourism: {
+                A1: ["Introduction to Hospitality", "Reception desk basics", "Giving directions"],
+                A2: ["Handling reservations", "Explaining local attractions", "Food and Beverage service"],
+                B1: ["Dealing with complaints", "Tour guiding techniques", "Cross-cultural awareness"],
+                B2: ["Travel management", "Destination marketing", "Crisis response in tourism"],
+                C1: ["Sustainable tourism policy", "Hospitality leadership", "Strategic planning"],
+                C2: ["Global Tourism Expert", "Diplomatic communication", "Industry Mastery"]
+            },
+            teens: {
+                A1: ["Greeting & Self Intro", "School activities", "Daily routines"],
+                A2: ["Describing hobbies", "Simple storytelling", "Asking directions"],
+                B1: ["Public speaking basics", "Creative writing", "Debate for teens"],
+                B2: ["Academic excellence", "Content creation", "Leadership skills"],
+                C1: ["Global citizenship", "University preparation", "Critical thinking"],
+                C2: ["International youth leader", "Fluent discussion", "Academic Master"]
+            },
+            general: {
+                A1: ["Daily conversations", "Alphabet & Numbers", "Basic grammar"],
+                A2: ["Shopping & Dining out", "Describing past events", "Future plans"],
+                B1: ["Social media English", "Expressing opinions", "Idiomatic expressions"],
+                B2: ["Nuances of English", "Professional networking", "Advanced fluency"],
+                C1: ["Deep cultural insight", "Complex discussions", "Abstract reasoning"],
+                C2: ["Native-like proficiency", "Academic writing", "Total Mastery"]
+            }
+        };
+
+        function showLevel(lvl) {
+            currentLevel = lvl;
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById('btn' + lvl).classList.add('active');
+            updateSyllabus();
+        }
+
+        function updateSyllabus() {
+            const prog = document.getElementById('programSelect').value;
+            const title = document.getElementById('levelTitle');
+            const list = document.getElementById('itemList');
+            
+            const content = (syllabusData[prog] && syllabusData[prog][currentLevel]) ? 
+                            syllabusData[prog][currentLevel] : 
+                            ["Materi level " + currentLevel + " untuk " + prog, "Analisis mendalam", "Praktek intensif AI"];
+
+            title.innerText = currentLevel + " - " + getLevelName(currentLevel);
+            list.innerHTML = "";
+            
+            content.forEach(item => {
+                const li = document.createElement('li');
+                li.className = "flex items-start bg-blue-50 p-4 rounded-xl border-l-4 border-blue-900 shadow-sm";
+                li.innerHTML = `<i class="fas fa-check-circle text-blue-900 mt-1 mr-3"></i> <span class="text-sm font-bold text-blue-950">${item}</span>`;
+                list.appendChild(li);
+            });
+        }
+
+        function getLevelName(l) {
+            const names = { A1: 'Beginner', A2: 'Elementary', B1: 'Intermediate', B2: 'Upper-Intermediate', C1: 'Advanced', C2: 'Proficiency' };
+            return names[l];
+        }
+
+        updateSyllabus();
+    </script>
+</body>
+</html>

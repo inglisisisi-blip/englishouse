@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulir Pendaftaran - ENGLISHouse</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 py-10 px-4">
+    <div class="max-w-md mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div class="bg-blue-900 p-6 text-white text-center">
+            <h2 class="text-2xl font-bold italic">ENGLIS<span class="text-yellow-400">House</span></h2>
+            <p class="text-blue-200 text-sm mt-1">Anda memilih kelas: <span id="course-name-display" class="font-bold text-yellow-400"></span></p>
+        </div>
+        
+        <form name="pendaftaran-siswa" method="POST" action="/assessment.html" data-netlify="true" class="p-6 space-y-4" id="registrationForm">
+            <input type="hidden" name="form-name" value="pendaftaran-siswa" />
+            <input type="hidden" name="kelas_pilihan" id="hidden-course">
+
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+                <input type="text" name="nama" id="fullname" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Asal Sekolah/Instansi</label>
+                <input type="text" name="sekolah" id="school" required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Nomor WhatsApp</label>
+                <input type="tel" name="whatsapp" id="whatsapp" placeholder="Contoh: 0812..." required class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700">Alasan Mengikuti Kelas</label>
+                <textarea name="alasan" id="reason" rows="3" class="mt-1 block w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl shadow-lg transition duration-300 flex items-center justify-center">
+                Lanjut ke Diagnostic Assessment <i class="fas fa-arrow-right ml-2"></i>
+            </button>
+        </form>
+    </div>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const course = urlParams.get('course') || 'General English';
+        document.getElementById('course-name-display').innerText = course;
+        document.getElementById('hidden-course').value = course;
+
+        document.getElementById('registrationForm').addEventListener('submit', function(e) {
+            // Simpan nama siswa ke local storage untuk menyapa di halaman assessment.html
+            const nameInput = document.getElementById('fullname').value;
+            localStorage.setItem('student_name', nameInput);
+            
+            // Form akan terkirim secara otomatis ke Netlify dan diarahkan ke /assessment.html sesuai atribut 'action'
+        });
+    </script>
+</body>
+</html>
